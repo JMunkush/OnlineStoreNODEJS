@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const sequelize = require("./db");
 const cors = require("cors");
 const PORT = process.env.PORT || 8080;
@@ -11,8 +12,11 @@ const Rating = require('./models/Rating');
 const Type = require('./models/Type');
 const router = require("./routes/index");
 const errorHandler = require("./middleware/ErrorHandlingMiddleWare");
+const path = require("path");
 
 app.use(express.json()); // before use router
+app.use(express.static(path.resolve(__dirname, "static")));
+app.use(fileUpload({}));
 app.use("/api/v1/", router);
 app.use(cors());
 
@@ -48,3 +52,4 @@ app.get("/", (req, res) => {
         console.log(e);
     }
 })();
+

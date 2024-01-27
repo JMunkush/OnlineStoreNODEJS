@@ -1,16 +1,20 @@
 const Device = require("../models/Device");
+const {where} = require("sequelize");
 
 class DeviceService {
-    static async getAll(){
-        return await Device.findAll();
+    static async getAll(typeId){
+        return await Device.findAll({where: {
+            type_id:typeId
+            }});
     }
 
-    static async add(device){
-        await Device.create({device});
+    static async add(name, price, typeId, fileName){
+
+        await Device.create({name:name, price:price, img:fileName, TypeId: typeId});
     }
 
-    static async getOne(name){
-        return await Device.findOne({where:name})
+    static async getOne(id){
+        return await Device.findOne({where:id})
     }
 }
 

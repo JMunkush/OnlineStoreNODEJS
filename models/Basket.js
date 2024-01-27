@@ -4,7 +4,7 @@ const User = require("./User");
 
 const Basket = sequelize.define("Basket", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-}, { tableName: "basket", underscored: true});
+},{tableName:"baskets"});
 
 
 module.exports = Basket;

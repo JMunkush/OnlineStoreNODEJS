@@ -1,4 +1,4 @@
-const {Sequelize} = require("sequelize");
+const { Sequelize } = require("sequelize");
 const env = process.env;
 
 module.exports = new Sequelize(
@@ -10,4 +10,4 @@ module.exports = new Sequelize(
         host: env.DB_HOST,
         port: env.DB_PORT
     }
-)
+);
