@@ -12,9 +12,9 @@ const Type = require('./models/Type');
 const router = require("./routes/index");
 const errorHandler = require("./middleware/ErrorHandlingMiddleWare");
 
+app.use(express.json()); // before use router
 app.use("/api/v1/", router);
 app.use(cors());
-app.use(express.json());
 
 // last middleware
 app.use(errorHandler);
